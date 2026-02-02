@@ -3,7 +3,7 @@
 **WWW 2026 Tutorial**  
 📅 April 13, 2026 | 📍 Dubai, UAE
 
-[![Tutorial Website](https://img.shields.io/badge/Website-Live-blue)](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2025/)
+[![Tutorial Website](https://img.shields.io/badge/Website-Live-blue)](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2026/)
 [![arXiv](https://img.shields.io/badge/arXiv-2505.20243-b31b1b.svg)](https://arxiv.org/abs/2505.20243)
 [![Video](https://img.shields.io/badge/Video-Teaser-red)](https://youtu.be/u5Ug8lj85jM)
 
