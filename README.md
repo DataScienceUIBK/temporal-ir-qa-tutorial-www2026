@@ -13,7 +13,7 @@ This tutorial provides a comprehensive introduction to **Temporal Information Re
 
 ## Tutorial Website
 
-Visit our complete tutorial website: **[https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2025/](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2026/)**
+Visit our complete tutorial website: **[https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2026/](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2026/)**
 
 ## Key Topics
 
