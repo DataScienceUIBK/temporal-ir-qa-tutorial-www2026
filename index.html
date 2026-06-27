@@ -1,553 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temporal Information Retrieval and Question Answering in the Age of LLMs - WWW 2026 Tutorial</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        
-        .container {
-            max-width: 1200px;
-            width: 98%;
-            margin: 0 auto;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-        
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        header .subtitle {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            opacity: 0.95;
-        }
-        
-        header .conference {
-            font-size: 1.1em;
-            opacity: 0.9;
-            margin-top: 20px;
-        }
-        
-        nav {
-            background-color: #2c3e50;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav ul li {
-            margin: 0;
-        }
-        
-        nav ul li a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 15px 25px;
-            transition: background-color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            background-color: #34495e;
-        }
-        
-        section {
-            padding: 50px 40px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        section:last-child {
-            border-bottom: none;
-        }
-        
-        section h2 {
-            color: #667eea;
-            font-size: 2em;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-        
-        section h3 {
-            color: #555;
-            font-size: 1.4em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-        
-        section p, section ul {
-            margin-bottom: 15px;
-            font-size: 1.05em;
-            color: #555;
-        }
-        
-        section ul {
-            padding-left: 30px;
-        }
-        
-        section ul li {
-            margin-bottom: 10px;
-        }
-        
-        .abstract-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 4px;
-            font-size: 1.05em;
-            line-height: 1.8;
-            text-align: justify;
-        }
-        
-        .highlight-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        
-        .schedule-item {
-            background-color: #fff;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .schedule-item h3 {
-            color: #667eea;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-        
-        .schedule-item .presenter {
-            color: #764ba2;
-            font-size: 1.05em;
-            margin-bottom: 10px;
-        }
-        
-        .schedule-item ul {
-            margin-top: 10px;
-        }
-        
-        .schedule-break {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-left: 4px solid #95a5a6;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-            text-align: center;
-        }
-        
-        .schedule-break h3 {
-            color: #555;
-            margin: 0 0 10px 0;
-        }
-        
-        .schedule-break p {
-            color: #666;
-            margin: 0;
-            font-style: italic;
-        }
-        
-        .speaker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .speaker-card {
-            text-align: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        
-        .speaker-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .speaker-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid #667eea;
-        }
-        
-        .speaker-card h4 {
-            color: #667eea;
-            margin: 15px 0 5px 0;
-            font-size: 1.2em;
-        }
-        
-        .speaker-card h4 a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .speaker-card h4 a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-        
-        .speaker-card p.title {
-            color: #764ba2;
-            font-style: italic;
-            font-size: 1em;
-            margin: 5px 0;
-        }
-        
-        .speaker-card p {
-            font-size: 0.95em;
-            color: #666;
-        }
-        
-        .speaker-card a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .speaker-card a:hover {
-            text-decoration: underline;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 10px 10px 0;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #5568d3;
-        }
-        
-        section a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        section a:hover {
-            text-decoration: underline;
-        }
-        
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 0;
-        }
-        
-        footer p {
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            
-            header .subtitle {
-                font-size: 1.1em;
-            }
-            
-            section {
-                padding: 30px 20px;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li a {
-                border-bottom: 1px solid #34495e;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temporal Information Retrieval and Question Answering in the Age of LLMs — WWW 2026 Tutorial</title>
+<meta name="description" content="A half-day WWW 2026 tutorial on Temporal Information Retrieval and Question Answering, from rule-based methods to LLMs and temporal RAG. Dubai, June 29 – July 3, 2026.">
+<meta name="theme-color" content="#667eea">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Temporal IR & QA in the Age of LLMs — WWW 2026 Tutorial">
+<meta property="og:description" content="A half-day tutorial on temporal retrieval, reasoning, and RAG over evolving knowledge. WWW 2026, Dubai.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --p1:#667eea;            /* primary */
+  --p2:#764ba2;            /* secondary */
+  --grad:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  --nav:#2c3e50;
+  --page:#f5f5f5;
+  --surface:#ffffff;
+  --text:#444b54;
+  --muted:#6b7280;
+  --line:#e7e6f0;
+  --line-soft:#f3f2f9;
+  --maxw:1200px;
+  --r:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  background:var(--page);color:var(--text);line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--p1);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.container{max-width:var(--maxw);width:95%;margin:0 auto;background:var(--surface);box-shadow:0 0 20px rgba(0,0,0,.1)}
+.wrap{max-width:1000px;width:90%;margin:0 auto}
+
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--p2)}
+
+/* ── HERO (purple gradient, original scheme) ── */
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:64px 100%;pointer-events:none}
+.hero-inner{max-width:1000px;width:90%;margin:0 auto;padding:60px 0 0;position:relative;z-index:1}
+.hero .eyebrow{display:block;color:rgba(255,255,255,.85);margin-bottom:18px}
+.hero h1{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3.1rem);line-height:1.12;letter-spacing:-.01em;max-width:18ch}
+.subtitle{font-size:1.2rem;opacity:.95;margin-top:14px}
+.presenters{font-family:"IBM Plex Mono",monospace;font-size:.86rem;color:rgba(255,255,255,.8);margin-top:22px;letter-spacing:.02em}
+.presenters b{color:#fff;font-weight:500}
+.meta-line{margin-top:12px;font-size:1rem;opacity:.92}
+
+.timeaxis{margin-top:46px;padding-bottom:52px;position:relative;z-index:1}
+.timeaxis .axis-label{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:14px}
+.axis-track{height:3px;border-radius:2px;background:rgba(255,255,255,.45);transform-origin:left}
+.axis-nodes{display:grid;grid-template-columns:repeat(4,1fr)}
+.node{position:relative;padding-top:26px}
+.node::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--p2);border:2px solid rgba(255,255,255,.7)}
+.node:nth-child(1)::before{background:#fff}
+.node:nth-child(4)::before{background:#fff;border-color:#fff}
+.node .era{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;color:rgba(255,255,255,.7);text-transform:uppercase}
+.node .what{font-size:.92rem;color:#fff;margin-top:3px;line-height:1.35;padding-right:14px}
+
+/* ── NAV (original dark slate) ── */
+nav{position:sticky;top:0;z-index:50;background:var(--nav)}
+nav .inner{max-width:1000px;width:90%;margin:0 auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav .inner::-webkit-scrollbar{display:none}
+nav a{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:16px 18px;white-space:nowrap;border-bottom:2px solid transparent}
+nav a:hover{background:#34495e;text-decoration:none;border-bottom-color:var(--p1)}
+
+/* ── SECTIONS ── */
+section[id]{scroll-margin-top:60px}
+.block{padding:60px 0}
+.block + .block{border-top:1px solid #eee}
+.section-head{margin-bottom:30px}
+.section-head .eyebrow{display:block;margin-bottom:8px}
+.section-head h2{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.2rem);line-height:1.1;color:var(--p1);padding-bottom:12px;border-bottom:3px solid var(--p1);display:inline-block}
+.lede{font-size:1.1rem;line-height:1.8;color:var(--text);max-width:64ch}
+.lede + .lede{margin-top:16px}
+.lede em{color:var(--p2);font-style:normal;font-weight:500}
+
+/* abstract with gradient side rule */
+.abstract{position:relative;padding-left:26px}
+.abstract::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--grad);border-radius:2px}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:36px 52px}
+.cols h3{font-family:"Newsreader",serif;font-weight:600;font-size:1.15rem;color:var(--p2);margin-bottom:14px}
+.ticklist{list-style:none}
+.ticklist li{position:relative;padding-left:24px;margin-bottom:11px;color:var(--text);font-size:1rem}
+.ticklist li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid var(--p1)}
+.subhead{font-family:"Newsreader",serif;font-weight:600;font-size:1.2rem;color:var(--p2);margin:32px 0 10px}
+.aud{color:var(--muted);max-width:64ch}
+
+/* ── SPEAKERS (on top) ── */
+.spk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
+.spk{background:#f8f9fa;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;text-align:center;transition:transform .25s,box-shadow .25s}
+.spk:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(102,126,234,.18)}
+.spk .avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 16px;position:relative}
+.spk .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--p1)}
+.spk .mono{width:100%;height:100%;border-radius:50%;display:none;align-items:center;justify-content:center;font-family:"Newsreader",serif;font-size:2.1rem;color:#fff;background:var(--grad);border:3px solid var(--p1)}
+.spk .avatar.fallback img{display:none}
+.spk .avatar.fallback .mono{display:flex}
+.spk h4{font-family:"Newsreader",serif;font-weight:600;font-size:1.22rem;margin-bottom:4px}
+.spk h4 a{color:var(--p1)}
+.spk h4 a:hover{color:var(--p2)}
+.spk .role{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--p2);margin-bottom:6px}
+.spk .org{color:var(--muted);font-size:.92rem}
+
+/* ── SCHEDULE TIMELINE ── */
+.timeline{position:relative}
+.timeline::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:var(--grad)}
+.tl-item{position:relative;padding:0 0 28px 64px}
+.tl-num{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--p1);display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--p2);z-index:1}
+.tl-item:last-of-type .tl-num{border-color:var(--p2)}
+.tl-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--p1);border-radius:var(--r);padding:20px 24px;box-shadow:0 2px 6px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s}
+.tl-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(102,126,234,.15)}
+.tl-card h3{font-family:"Newsreader",serif;font-weight:600;font-size:1.22rem;color:var(--p1);margin-bottom:6px}
+.tl-goal{color:var(--muted);font-size:.96rem;margin-bottom:12px}
+.tl-goal b{color:var(--p2);font-weight:600;font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.tl-card ul{list-style:none}
+.tl-card ul li{position:relative;padding-left:18px;margin-bottom:7px;font-size:.97rem;color:var(--text)}
+.tl-card ul li::before{content:"";position:absolute;left:0;top:.66em;width:5px;height:5px;border-radius:50%;background:var(--p1)}
+.tl-item.interlude .tl-num{background:var(--p2);border-color:var(--p2);color:#fff;font-size:1rem}
+.tl-mini{border:1px solid var(--line);background:linear-gradient(135deg,#f8f9fa 0%,#eef0fb 100%);border-left:4px solid #95a5a6;border-radius:var(--r);padding:16px 22px}
+.tl-mini h3{font-family:"IBM Plex Mono",monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:4px}
+.tl-mini p{color:var(--muted);font-size:.95rem;font-style:italic}
+
+/* ── MATERIALS ── */
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.mat{display:flex;flex-direction:column;justify-content:space-between;gap:18px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--p1);border-radius:var(--r);padding:24px;transition:transform .2s,box-shadow .2s}
+.mat:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(102,126,234,.15)}
+.mat .kind{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--p2)}
+.mat h3{font-family:"Newsreader",serif;font-weight:500;font-size:1.18rem;color:var(--p1);margin:8px 0 0;line-height:1.3}
+.mat .go{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--p2)}
+.mat.pending{background:var(--line-soft)}
+.mat.pending .go{color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact{background:#f8f9fa;border:1px solid var(--line);border-left:4px solid var(--p1);border-radius:var(--r);padding:24px 26px;margin-top:18px}
+.contact .lbl{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--p2);margin-bottom:10px}
+.contact p.mono{font-family:"IBM Plex Mono",monospace;font-size:.85rem;margin-bottom:6px}
+
+/* ── FOOTER (original slate) ── */
+footer{background:var(--nav);color:#cfd6df;text-align:center;padding:30px 0}
+footer .wrap{display:flex;flex-direction:column;gap:6px}
+footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+
+/* ── MOTION ── */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero h1,.subtitle,.presenters,.meta-line,.timeaxis{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.subtitle{animation-delay:.05s}.presenters{animation-delay:.1s}.meta-line{animation-delay:.15s}.timeaxis{animation-delay:.2s}
+.axis-track{animation:draw .9s ease .35s both}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ── RESPONSIVE ── */
+@media (max-width:760px){
+  .hero-inner{padding-top:48px}
+  .axis-nodes{grid-template-columns:1fr 1fr;gap:18px 0}
+  .cols{grid-template-columns:1fr;gap:26px}
+  .block{padding:46px 0}
+  .tl-item{padding-left:54px}
+  .timeline::before{left:15px}
+  .tl-num{width:32px;height:32px;font-size:.72rem}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Temporal Information Retrieval and Question Answering in the Age of LLMs</h1>
-            <p class="subtitle">A Comprehensive Tutorial</p>
-            <p class="conference">WWW 2026 Conference | June 29-3 July, 2026 | Dubai, UAE</p>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="#abstract">Abstract</a></li>
-                <li><a href="#speakers">Speakers</a></li>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#materials">Materials</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li><a href="#resources">Resources</a></li>
-            </ul>
-        </nav>
+<div class="container">
 
-        <section id="abstract">
-            <h2>Abstract</h2>
-            <div class="abstract-box">
-                <p>
-                    Time plays a crucial role in how we retrieve, interpret, and reason over information. As knowledge on the Web continuously evolves, information retrieval (IR) and question answering (QA) systems must recognize not only what is relevant but also when it is valid. This tutorial provides a comprehensive overview of Temporal Information Retrieval (TIR) and Temporal Question Answering (TQA), two closely related fields that address temporal relevance, reasoning, and adaptation in information access.
-                </p>
-                <p>
-                    We trace the evolution of temporal methods from early rule-based and probabilistic approaches to modern transformer and large language model (LLM) architectures, highlighting how temporal modeling, reasoning, and retrieval-augmented generation (RAG) are reshaping the field. Participants will learn the fundamental principles of temporal IR/QA, explore pre-LLM and neural methods, and examine recent advances in temporal RAG and temporal reasoning over evolving knowledge.
-                </p>
-                <p>
-                    The tutorial concludes with open challenges and future directions for building temporally robust and adaptive AI systems. By bridging classical IR concepts with modern LLM-based reasoning, this tutorial offers a timely and unified perspective on temporal information access for the evolving Web.
-                </p>
-            </div>
-        </section>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">WWW 2026 · Half-day Tutorial</span>
+    <h1>Temporal Information Retrieval and Question Answering in the Age of LLMs</h1>
+    <p class="subtitle">A Comprehensive Tutorial</p>
+    <p class="presenters"><b>Bhawna Piryani</b> · <b>Avishek Anand</b> · <b>Adam Jatowt</b></p>
+    <p class="meta-line">Dubai, UAE &nbsp;—&nbsp; June 29 – July 3, 2026</p>
 
-        <section id="speakers">
-            <h2>Tutorial Speakers</h2>
-            
-            <div class="speaker-grid">
-                <div class="speaker-card">
-                    <img src="pictures/bhawna-piryani.png" alt="Bhawna Piryani">
-                    <h4><a href="https://bhawnapiryani.github.io/" target="_blank">Bhawna Piryani</a></h4>
-                    <p class="title">Ph.D. Candidate</p>
-                    <p><strong>University of Innsbruck, Austria</strong></p>
-                </div>
-                
-                <div class="speaker-card">
-                    <img src="pictures/avishek-anand.webp" alt="Avishek Anand">
-                    <h4><a href="https://www.avishekanand.com/" target="_blank">Avishek Anand</a></h4>
-                    <p class="title">Associate Professor</p>
-                    <p><strong>Delft University of Technology, Netherlands</strong></p>
-                </div>
-                
-                <div class="speaker-card">
-                    <img src="pictures/adam-jatowt.jpg" alt="Adam Jatowt">
-                    <h4><a href="https://ds-informatik.uibk.ac.at/doku.php?id=homepage" target="_blank">Adam Jatowt</a></h4>
-                    <p class="title">Professor</p>
-                    <p><strong>University of Innsbruck, Austria</strong></p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="overview">
-            <h2>Tutorial Overview</h2>
-            
-            <div class="highlight-box">
-                <h3>Key Topics Covered</h3>
-                <ul>
-                    <li>Fundamentals of Temporal Information Retrieval (TIR)</li>
-                    <li>Temporal Question Answering (TQA) systems and architectures</li>
-                    <li>Evolution from rule-based to probabilistic approaches</li>
-                    <li>Modern transformer and LLM architectures for temporal reasoning</li>
-                    <li>Temporal modeling and Retrieval-Augmented Generation (RAG)</li>
-                    <li>Temporal reasoning over evolving knowledge</li>
-                    <li>Recent advances and benchmarks in temporal IR/QA</li>
-                    <li>Open challenges and future research directions</li>
-                </ul>
-            </div>
-            
-            <h3>Learning Outcomes</h3>
-            <p>After attending this tutorial, participants will be able to:</p>
-            <ul>
-                <li>Understand the unique challenges of temporal information retrieval and question answering</li>
-                <li>Trace the evolution of temporal methods from classical to modern LLM-based approaches</li>
-                <li>Design and implement temporal QA systems using state-of-the-art techniques</li>
-                <li>Leverage LLMs and RAG for temporal reasoning tasks</li>
-                <li>Evaluate temporal IR and QA systems using standard benchmarks</li>
-                <li>Identify promising research directions and open challenges in temporal information access</li>
-            </ul>
-
-            <h3>Target Audience</h3>
-            <p>
-                This tutorial is designed for researchers, practitioners, and graduate students interested in information retrieval, 
-                natural language processing, question answering, and large language models. Participants should have basic knowledge 
-                of NLP and machine learning concepts.
-            </p>
-        </section>
-
-        <section id="materials">
-            <h2>Materials</h2>
-            <p>All tutorial materials will be made available here before and after the tutorial.</p>
-            
-            <h3>Video Teaser</h3>
-            <p>
-                <a href="https://youtu.be/u5Ug8lj85jM" target="_blank" class="btn">Watch Video Teaser</a>
-            </p>
-            
-            <h3>Survey Paper</h3>
-            <p>
-                <a href="https://arxiv.org/abs/2505.20243" target="_blank" class="btn">It's High Time: A Survey of Temporal Question Answering</a>
-            </p>
-
-            <h3>Slides</h3>
-            <p>
-                <p><em>Tutorial slides will be made available here after the tutorial on June 29-3 July, 2026.</em></p>
-            </p>
-            
-        </section>
-    
-        
-        <section id="schedule">
-            <h2>Schedule</h2>
-            <p><em>Duration: Half-day tutorial</em></p>
-            
-            <div class="schedule-item">
-                <h3>1. Introduction and Motivation</h3>
-                <p><strong>Goal:</strong> Establish why time is a fundamental dimension in information access.</p>
-                <ul>
-                    <li>Why time matters in IR and QA: recency, evolution, factual decay</li>
-                    <li>Key challenges: knowledge volatility, temporal ambiguity, context shift</li>
-                    <li>Core definitions and taxonomy of temporal IR and QA</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>2. Core Concepts and Temporal IR Tasks)</h3>
-                <p><strong>Goal:</strong> Introduce canonical temporal tasks and benchmarks.</p>
-                <ul>
-                    <li>Temporal intent detection, document dating, focus time estimation</li>
-                    <li>Temporal granularity and temporal query understanding</li>
-                    <li>Benchmark overview: design and evaluation paradigms</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>3. Foundations: Pre-LLM Temporal IR Models</h3>
-                <p><strong>Goal:</strong> Review classical methods prior to the neural era.</p>
-                <ul>
-                    <li>Rule-based, statistical, and temporal language modeling approaches</li>
-                    <li>Frameworks for temporal annotation and normalization</li>
-                    <li>Temporal indexing and ranking strategies</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>4. Neural and Transformer-based Temporal Models</h3>
-                <p><strong>Goal:</strong> Explain the evolution of temporal representation learning.</p>
-                <ul>
-                    <li>Temporal language models</li>
-                    <li>Temporal adaptation, continual learning, and timestamp conditioning</li>
-                    <li>How neural encoders capture or forget temporal signals</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>Quick Q&A</h3>
-                <p class="presenter"><strong>All presenters</strong></p>
-                <p>Clarify foundational concepts and prepare participants for the RAG and reasoning sections.</p>
-            </div>
-            
-            <div class="schedule-break">
-                <h3>☕ Coffee Break</h3>
-                <p>Informal networking and discussion</p>
-            </div>
-            <div class="schedule-item">
-                <h3>5. Temporal RAG and Reasoning</h3>
-                <p><strong>Goal:</strong> Explore retrieval and reasoning in LLM-based temporal systems.</p>
-                <ul>
-                    <li>Integrating temporal retrieval within LLM pipelines (Temporal RAG)</li>
-                    <li>Temporal dense retrievers and alignment</li>
-                    <li>Temporal reasoning: event ordering, duration inference, multi-hop reasoning</li>
-                    <li>Benchmarks for evaluation and temporal reasoning limits of LLMs</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>6. Temporal Web and Evaluation Ecosystem</h3>
-                <p><strong>Goal:</strong> Connect temporal IR to the Web context and evaluation resources.</p>
-                <ul>
-                    <li>Temporal Web analytics and the TempWeb workshop legacy</li>
-                    <li>Evaluating time-aware retrieval on dynamic and archived Web data</li>
-                    <li>Datasets and tools for temporal QA and retrieval</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>7. Emerging Topics and Open Challenges)</h3>
-                <p><strong>Goal:</strong> Discuss open challenges and future directions.</p>
-                <ul>
-                    <li>Temporal uncertainty, diachronic–synchronic integration</li>
-                    <li>Continual updates, temporally aware LLM agents, dynamic evaluation</li>
-                </ul>
-            </div>
-            
-            <div class="schedule-item">
-                <h3>8. Concluding Discussion and Q&A</h3>
-                <p><strong>Goal:</strong> Summarize insights and engage participants.</p>
-                <ul>
-                    <li>Key takeaways and conceptual synthesis</li>
-                    <li>Interactive discussion on open research problems</li>
-                </ul>
-            </div>
-        </section>
-    
-        
-        
-        
-        
-        <section id="resources">
-            <h2>Additional Resources</h2>
-            
-            <h3>Key Papers</h3>
-            <p><em>Coming soon - A curated list of key papers in temporal IR and QA will be added here.</em></p>
-             
-            <h3>Contact</h3>
-            <p>For questions or inquiries about this tutorial, please contact:</p>
-            <p>
-                📧 <a href="mailto:bhawna.piryani@uibk.ac.at">bhawna.piryani@uibk.ac.at</a> (Bhawna Piryani)<br>
-                📧 <a href="mailto:avishek.anand@tudelft.nl">avishek.anand@tudelft.nl</a> (Avishek Anand)<br>
-                📧 <a href="mailto:adam.jatowt@uibk.ac.at">adam.jatowt@uibk.ac.at</a> (Adam Jatowt)
-            </p>
-        </section>
-        
-        <footer>
-            <p>&copy; 2026 WWW Conference Tutorial | Temporal IR & QA in the Age of LLMs</p>
-        </footer>
+    <div class="timeaxis">
+      <div class="axis-label"><span>← Classical</span><span>LLM era →</span></div>
+      <div class="axis-track"></div>
+      <div class="axis-nodes">
+        <div class="node"><div class="era">1990s–2000s</div><div class="what">Rule-based &amp; statistical methods</div></div>
+        <div class="node"><div class="era">2000s–2010s</div><div class="what">Probabilistic &amp; temporal language models</div></div>
+        <div class="node"><div class="era">2018–2022</div><div class="what">Neural &amp; transformer encoders</div></div>
+        <div class="node"><div class="era">2023–now</div><div class="what">LLMs &amp; temporal RAG</div></div>
+      </div>
     </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <a href="#speakers">Speakers</a>
+    <a href="#abstract">Abstract</a>
+    <a href="#overview">Overview</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#materials">Materials</a>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<!-- SPEAKERS (top) -->
+<section id="speakers" class="block">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Tutorial Speakers</span><h2>Speakers</h2></div>
+    <div class="spk-grid">
+      <div class="spk">
+        <div class="avatar"><img src="pictures/bhawna-piryani.png" alt="Bhawna Piryani" onerror="this.parentNode.classList.add('fallback')"><div class="mono">BP</div></div>
+        <h4><a href="https://bhawnapiryani.github.io/" target="_blank" rel="noopener">Bhawna Piryani</a></h4>
+        <p class="role">Ph.D. Candidate</p>
+        <p class="org">University of Innsbruck, Austria</p>
+      </div>
+      <div class="spk">
+        <div class="avatar"><img src="pictures/avishek-anand.webp" alt="Avishek Anand" onerror="this.parentNode.classList.add('fallback')"><div class="mono">AA</div></div>
+        <h4><a href="https://www.avishekanand.com/" target="_blank" rel="noopener">Avishek Anand</a></h4>
+        <p class="role">Associate Professor</p>
+        <p class="org">Delft University of Technology, Netherlands</p>
+      </div>
+      <div class="spk">
+        <div class="avatar"><img src="pictures/adam-jatowt.jpg" alt="Adam Jatowt" onerror="this.parentNode.classList.add('fallback')"><div class="mono">AJ</div></div>
+        <h4><a href="https://ds-informatik.uibk.ac.at/doku.php?id=homepage" target="_blank" rel="noopener">Adam Jatowt</a></h4>
+        <p class="role">Professor</p>
+        <p class="org">University of Innsbruck, Austria</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section id="abstract" class="block">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Abstract</span><h2>Abstract</h2></div>
+    <div class="abstract">
+      <p class="lede">Time plays a crucial role in how we retrieve, interpret, and reason over information. As knowledge on the Web continuously evolves, information retrieval (IR) and question answering (QA) systems must recognize not only what is relevant but also when it is valid. This tutorial provides a comprehensive overview of Temporal Information Retrieval (TIR) and Temporal Question Answering (TQA), two closely related fields that address temporal relevance, reasoning, and adaptation in information access.</p>
+      <p class="lede">We trace the evolution of temporal methods from early rule-based and probabilistic approaches to modern transformer and large language model (LLM) architectures, highlighting how temporal modeling, reasoning, and retrieval-augmented generation (RAG) are reshaping the field. Participants will learn the fundamental principles of temporal IR/QA, explore pre-LLM and neural methods, and examine recent advances in temporal RAG and temporal reasoning over evolving knowledge.</p>
+      <p class="lede">The tutorial concludes with open challenges and future directions for building temporally robust and adaptive AI systems. By bridging classical IR concepts with modern LLM-based reasoning, this tutorial offers a timely and unified perspective on temporal information access for the evolving Web.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview" class="block">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Tutorial Overview</span><h2>Tutorial Overview</h2></div>
+    <div class="cols">
+      <div>
+        <h3>Key Topics Covered</h3>
+        <ul class="ticklist">
+          <li>Fundamentals of Temporal Information Retrieval (TIR)</li>
+          <li>Temporal Question Answering (TQA) systems and architectures</li>
+          <li>Evolution from rule-based to probabilistic approaches</li>
+          <li>Modern transformer and LLM architectures for temporal reasoning</li>
+          <li>Temporal modeling and Retrieval-Augmented Generation (RAG)</li>
+          <li>Temporal reasoning over evolving knowledge</li>
+          <li>Recent advances and benchmarks in temporal IR/QA</li>
+          <li>Open challenges and future research directions</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Learning Outcomes</h3>
+        <ul class="ticklist">
+          <li>Understand the unique challenges of temporal IR and QA</li>
+          <li>Trace temporal methods from classical to modern LLM-based approaches</li>
+          <li>Design and implement temporal QA systems using state-of-the-art techniques</li>
+          <li>Leverage LLMs and RAG for temporal reasoning tasks</li>
+          <li>Evaluate temporal IR and QA systems using standard benchmarks</li>
+          <li>Identify promising research directions and open challenges</li>
+        </ul>
+      </div>
+    </div>
+    <h3 class="subhead">Target Audience</h3>
+    <p class="aud">This tutorial is designed for researchers, practitioners, and graduate students interested in information retrieval, natural language processing, question answering, and large language models. Participants should have basic knowledge of NLP and machine learning concepts.</p>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" class="block">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Schedule · Half-day</span><h2>Schedule</h2></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-num">01</div><div class="tl-card">
+        <h3>Introduction and Motivation</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Establish why time is a fundamental dimension in information access.</p>
+        <ul>
+          <li>Why time matters in IR and QA: recency, evolution, factual decay</li>
+          <li>Key challenges: knowledge volatility, temporal ambiguity, context shift</li>
+          <li>Core definitions and taxonomy of temporal IR and QA</li>
+        </ul>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">02</div><div class="tl-card">
+        <h3>Core Concepts and Temporal IR Tasks</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Introduce canonical temporal tasks and benchmarks.</p>
+        <ul>
+          <li>Temporal intent detection, document dating, focus time estimation</li>
+          <li>Temporal granularity and temporal query understanding</li>
+          <li>Benchmark overview: design and evaluation paradigms</li>
+        </ul>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">03</div><div class="tl-card">
+        <h3>Foundations: Pre-LLM Temporal IR Models</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Review classical methods prior to the neural era.</p>
+        <ul>
+          <li>Rule-based, statistical, and temporal language modeling approaches</li>
+          <li>Frameworks for temporal annotation and normalization</li>
+          <li>Temporal indexing and ranking strategies</li>
+        </ul>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">04</div><div class="tl-card">
+        <h3>Neural and Transformer-based Temporal Models</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Explain the evolution of temporal representation learning.</p>
+        <ul>
+          <li>Temporal language models</li>
+          <li>Temporal adaptation, continual learning, and timestamp conditioning</li>
+          <li>How neural encoders capture or forget temporal signals</li>
+        </ul>
+      </div></div>
+      <div class="tl-item interlude"><div class="tl-num">Q</div><div class="tl-mini">
+        <h3>Quick Q&amp;A · all presenters</h3>
+        <p>Clarify foundational concepts and prepare participants for the RAG and reasoning sections.</p>
+      </div></div>
+      <div class="tl-item interlude"><div class="tl-num">☕</div><div class="tl-mini">
+        <h3>Coffee Break</h3>
+        <p>Informal networking and discussion.</p>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">05</div><div class="tl-card">
+        <h3>Temporal RAG and Reasoning</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Explore retrieval and reasoning in LLM-based temporal systems.</p>
+        <ul>
+          <li>Integrating temporal retrieval within LLM pipelines (Temporal RAG)</li>
+          <li>Temporal dense retrievers and alignment</li>
+          <li>Temporal reasoning: event ordering, duration inference, multi-hop reasoning</li>
+          <li>Benchmarks for evaluation and temporal reasoning limits of LLMs</li>
+        </ul>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">06</div><div class="tl-card">
+        <h3>Temporal Web and Evaluation Ecosystem</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Connect temporal IR to the Web context and evaluation resources.</p>
+        <ul>
+          <li>Temporal Web analytics and the TempWeb workshop legacy</li>
+          <li>Evaluating time-aware retrieval on dynamic and archived Web data</li>
+          <li>Datasets and tools for temporal QA and retrieval</li>
+        </ul>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">07</div><div class="tl-card">
+        <h3>Emerging Topics and Open Challenges</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Discuss open challenges and future directions.</p>
+        <ul>
+          <li>Temporal uncertainty, diachronic–synchronic integration</li>
+          <li>Continual updates, temporally aware LLM agents, dynamic evaluation</li>
+        </ul>
+      </div></div>
+      <div class="tl-item"><div class="tl-num">08</div><div class="tl-card">
+        <h3>Concluding Discussion and Q&amp;A</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Summarize insights and engage participants.</p>
+        <ul>
+          <li>Key takeaways and conceptual synthesis</li>
+          <li>Interactive discussion on open research problems</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section id="materials" class="block">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Materials</span><h2>Materials</h2></div>
+    <p class="lede" style="margin-bottom:24px">All tutorial materials will be made available here before and after the tutorial.</p>
+    <div class="mat-grid">
+      <a class="mat" href="https://youtu.be/u5Ug8lj85jM" target="_blank" rel="noopener">
+        <div><span class="kind">Video Teaser</span><h3>Watch the teaser</h3></div>
+        <span class="go">Watch →</span>
+      </a>
+      <a class="mat" href="https://arxiv.org/abs/2505.20243" target="_blank" rel="noopener">
+        <div><span class="kind">Survey Paper</span><h3>It's High Time: A Survey of Temporal Question Answering</h3></div>
+        <span class="go">arXiv:2505.20243 →</span>
+      </a>
+      <div class="mat pending">
+        <div><span class="kind">Slides</span><h3>Tutorial slide deck</h3></div>
+        <span class="go">Available after June 29 – July 3, 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="block">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Additional Resources</span><h2>Additional Resources</h2></div>
+    <h3 class="subhead" style="margin-top:0">Key Papers</h3>
+    <p class="aud">Coming soon — a curated list of key papers in temporal IR and QA will be added here.</p>
+    <div class="contact">
+      <p class="lbl">Contact</p>
+      <p class="mono">📧 <a href="mailto:bhawna.piryani@uibk.ac.at">bhawna.piryani@uibk.ac.at</a> — Bhawna Piryani</p>
+      <p class="mono">📧 <a href="mailto:avishek.anand@tudelft.nl">avishek.anand@tudelft.nl</a> — Avishek Anand</p>
+      <p class="mono">📧 <a href="mailto:adam.jatowt@uibk.ac.at">adam.jatowt@uibk.ac.at</a> — Adam Jatowt</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">Temporal IR &amp; QA in the Age of LLMs</p>
+    <p>© 2026 WWW Conference Tutorial · Dubai, UAE</p>
+  </div>
+</footer>
+
+</div>
 </body>
 </html>
