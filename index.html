@@ -80,12 +80,13 @@ section[id]{scroll-margin-top:60px}
 .section-head{margin-bottom:30px}
 .section-head .eyebrow{display:block;margin-bottom:8px}
 .section-head h2{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.2rem);line-height:1.1;color:var(--p1);padding-bottom:12px;border-bottom:3px solid var(--p1);display:inline-block}
-.lede{font-size:1.1rem;line-height:1.8;color:var(--text);max-width:64ch}
+.lede{font-size:1.1rem;line-height:1.8;color:var(--text)}
 .lede + .lede{margin-top:16px}
 .lede em{color:var(--p2);font-style:normal;font-weight:500}
 
 /* abstract with gradient side rule */
 .abstract{position:relative;padding-left:26px}
+.abstract .lede{text-align:justify}
 .abstract::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--grad);border-radius:2px}
 
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px 52px}
@@ -94,7 +95,7 @@ section[id]{scroll-margin-top:60px}
 .ticklist li{position:relative;padding-left:24px;margin-bottom:11px;color:var(--text);font-size:1rem}
 .ticklist li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid var(--p1)}
 .subhead{font-family:"Newsreader",serif;font-weight:600;font-size:1.2rem;color:var(--p2);margin:32px 0 10px}
-.aud{color:var(--muted);max-width:64ch}
+.aud{color:var(--muted)}
 
 /* ── SPEAKERS (on top) ── */
 .spk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
@@ -210,7 +211,7 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
 <!-- SPEAKERS (top) -->
 <section id="speakers" class="block">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Tutorial Speakers</span><h2>Speakers</h2></div>
+    <div class="section-head"><h2>Speakers</h2></div>
     <div class="spk-grid">
       <div class="spk">
         <div class="avatar"><img src="pictures/bhawna-piryani.png" alt="Bhawna Piryani" onerror="this.parentNode.classList.add('fallback')"><div class="mono">BP</div></div>
@@ -237,7 +238,7 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
 <!-- ABSTRACT -->
 <section id="abstract" class="block">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Abstract</span><h2>Abstract</h2></div>
+    <div class="section-head"><h2>Abstract</h2></div>
     <div class="abstract">
       <p class="lede">Time plays a crucial role in how we retrieve, interpret, and reason over information. As knowledge on the Web continuously evolves, information retrieval (IR) and question answering (QA) systems must recognize not only what is relevant but also when it is valid. This tutorial provides a comprehensive overview of Temporal Information Retrieval (TIR) and Temporal Question Answering (TQA), two closely related fields that address temporal relevance, reasoning, and adaptation in information access.</p>
       <p class="lede">We trace the evolution of temporal methods from early rule-based and probabilistic approaches to modern transformer and large language model (LLM) architectures, highlighting how temporal modeling, reasoning, and retrieval-augmented generation (RAG) are reshaping the field. Participants will learn the fundamental principles of temporal IR/QA, explore pre-LLM and neural methods, and examine recent advances in temporal RAG and temporal reasoning over evolving knowledge.</p>
@@ -249,7 +250,7 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
 <!-- OVERVIEW -->
 <section id="overview" class="block">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Tutorial Overview</span><h2>Tutorial Overview</h2></div>
+    <div class="section-head"><h2>Tutorial Overview</h2></div>
     <div class="cols">
       <div>
         <h3>Key Topics Covered</h3>
@@ -284,7 +285,7 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
 <!-- SCHEDULE -->
 <section id="schedule" class="block">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Schedule · Half-day</span><h2>Schedule</h2></div>
+    <div class="section-head"><h2>Schedule</h2></div>
     <div class="timeline">
       <div class="tl-item"><div class="tl-num">01</div><div class="tl-card">
         <h3>Introduction and Motivation</h3>
@@ -372,7 +373,7 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
 <!-- MATERIALS -->
 <section id="materials" class="block">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Materials</span><h2>Materials</h2></div>
+    <div class="section-head"><h2>Materials</h2></div>
     <p class="lede" style="margin-bottom:24px">All tutorial materials will be made available here before and after the tutorial.</p>
     <div class="mat-grid">
       <a class="mat" href="https://youtu.be/u5Ug8lj85jM" target="_blank" rel="noopener">
@@ -394,7 +395,7 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
 <!-- RESOURCES -->
 <section id="resources" class="block">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Additional Resources</span><h2>Additional Resources</h2></div>
+    <div class="section-head"><h2>Additional Resources</h2></div>
     <h3 class="subhead" style="margin-top:0">Key Papers</h3>
     <p class="aud">Coming soon — a curated list of key papers in temporal IR and QA will be added here.</p>
     <div class="contact">
