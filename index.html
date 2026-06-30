@@ -259,84 +259,104 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
         <h3>Introduction and Motivation</h3>
         <p class="tl-goal"><b>Goal</b> &nbsp;Establish why time is a fundamental dimension in information access.</p>
         <ul>
-          <li>Why time matters in IR and QA: recency, evolution, factual decay</li>
-          <li>Key challenges: knowledge volatility, temporal ambiguity, context shift</li>
-          <li>Core definitions and taxonomy of temporal IR and QA</li>
+          <li>Why time matters in IR and QA: recency, evolution, and factual decay</li>
+          <li>Temporal ambiguity, changing context, and knowledge volatility</li>
+          <li>Scope and taxonomy of temporal information access</li>
         </ul>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">02</div><div class="tl-card">
         <h3>Core Concepts and Temporal IR Tasks</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Introduce canonical temporal tasks and benchmarks.</p>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Introduce the main concepts, signals, and canonical temporal IR tasks.</p>
         <ul>
-          <li>Temporal intent detection, document dating, focus time estimation</li>
-          <li>Temporal granularity and temporal query understanding</li>
-          <li>Benchmark overview: design and evaluation paradigms</li>
+          <li>Document time, content time, focus time, and temporal intent</li>
+          <li>Temporal granularity, proximity, and query understanding</li>
+          <li>Document dating, time-aware ranking, prediction, and timeline tasks</li>
         </ul>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">03</div><div class="tl-card">
-        <h3>Foundations: Pre-LLM Temporal IR Models</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Review classical methods prior to the neural era.</p>
+        <h3>Temporal QA/IR Datasets</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Review representative datasets and benchmarks for temporal QA and IR.</p>
         <ul>
-          <li>Rule-based, statistical, and temporal language modeling approaches</li>
-          <li>Frameworks for temporal annotation and normalization</li>
-          <li>Temporal indexing and ranking strategies</li>
+          <li>Datasets for temporal retrieval, question answering, and reasoning</li>
+          <li>Temporal annotations, evidence sources, and task formulations</li>
+          <li>Evaluation settings, metrics, and benchmark limitations</li>
         </ul>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">04</div><div class="tl-card">
-        <h3>Neural and Transformer-based Temporal Models</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Explain the evolution of temporal representation learning.</p>
+        <h3>Foundations: Pre-LLM Temporal IR</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Review classical temporal methods developed before the LLM era.</p>
         <ul>
-          <li>Temporal language models</li>
-          <li>Temporal adaptation, continual learning, and timestamp conditioning</li>
-          <li>How neural encoders capture or forget temporal signals</li>
+          <li>Rule-based and statistical approaches</li>
+          <li>Temporal language models, indexing, and ranking methods</li>
+          <li>Temporal annotation, normalization, and classical retrieval frameworks</li>
         </ul>
       </div></div>
+
       <div class="tl-item interlude"><div class="tl-num">Q</div><div class="tl-mini">
-        <h3>Quick Q&amp;A · all presenters</h3>
-        <p>Clarify foundational concepts and prepare participants for the RAG and reasoning sections.</p>
+        <h3>Quick Q&amp;A · All Presenters</h3>
+        <p>Questions and discussion on Sections 1–4.</p>
       </div></div>
+
       <div class="tl-item interlude"><div class="tl-num">☕</div><div class="tl-mini">
         <h3>Coffee Break</h3>
         <p>Informal networking and discussion.</p>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">05</div><div class="tl-card">
-        <h3>Temporal RAG and Reasoning</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Explore retrieval and reasoning in LLM-based temporal systems.</p>
+        <h3>Neural and Transformer-based Temporal Models</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Explain how neural models learn, encode, and adapt to temporal information.</p>
         <ul>
-          <li>Integrating temporal retrieval within LLM pipelines (Temporal RAG)</li>
-          <li>Temporal dense retrievers and alignment</li>
-          <li>Temporal reasoning: event ordering, duration inference, multi-hop reasoning</li>
-          <li>Benchmarks for evaluation and temporal reasoning limits of LLMs</li>
+          <li>Temporal language models and transformer-based representations</li>
+          <li>Temporal masking, timestamp conditioning, and adaptation</li>
+          <li>Continual learning and temporal knowledge updating</li>
         </ul>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">06</div><div class="tl-card">
         <h3>Temporal Web and Evaluation Ecosystem</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Connect temporal IR to the Web context and evaluation resources.</p>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Connect temporal IR and QA to the evolving and archived Web.</p>
         <ul>
-          <li>Temporal Web analytics and the TempWeb workshop legacy</li>
-          <li>Evaluating time-aware retrieval on dynamic and archived Web data</li>
-          <li>Datasets and tools for temporal QA and retrieval</li>
+          <li>Live versus archived Web content, link rot, and content drift</li>
+          <li>Web archives, WARC, Memento, the Wayback Machine, and pywb</li>
+          <li>Evaluation resources and community benchmarks</li>
         </ul>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">07</div><div class="tl-card">
-        <h3>Emerging Topics and Open Challenges</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Discuss open challenges and future directions.</p>
+        <h3>Temporal RAG</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Explore retrieval-augmented generation over evolving knowledge.</p>
         <ul>
-          <li>Temporal uncertainty, diachronic–synchronic integration</li>
-          <li>Continual updates, temporally aware LLM agents, dynamic evaluation</li>
+          <li>Standard RAG versus Temporal RAG</li>
+          <li>Time-aware retrieval, filtering, ranking, and evidence selection</li>
+          <li>Event ordering, duration inference, multi-hop reasoning, and temporal hallucinations</li>
         </ul>
       </div></div>
+
       <div class="tl-item"><div class="tl-num">08</div><div class="tl-card">
-        <h3>Concluding Discussion and Q&amp;A</h3>
-        <p class="tl-goal"><b>Goal</b> &nbsp;Summarize insights and engage participants.</p>
+        <h3>Emerging Topics and Open Challenges</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Identify research directions toward temporally robust and trustworthy AI.</p>
         <ul>
-          <li>Key takeaways and conceptual synthesis</li>
-          <li>Interactive discussion on open research problems</li>
+          <li>Temporal uncertainty, conflicting evidence, and calibration</li>
+          <li>Dynamic knowledge management and temporally aware agents</li>
+          <li>Domain-specific reasoning, continual evaluation, and trustworthy answers</li>
+        </ul>
+      </div></div>
+
+      <div class="tl-item"><div class="tl-num">09</div><div class="tl-card">
+        <h3>Concluding Discussion and Q&amp;A</h3>
+        <p class="tl-goal"><b>Goal</b> &nbsp;Synthesize the tutorial and engage participants in an interactive discussion.</p>
+        <ul>
+          <li>Key takeaways across temporal IR, QA, the Web, and RAG</li>
+          <li>Open research questions and opportunities for future work</li>
         </ul>
       </div></div>
     </div>
   </div>
 </section>
+
 
 <!-- MATERIALS -->
 <section id="materials" class="block">
