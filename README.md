@@ -89,11 +89,25 @@ For questions or inquiries about this tutorial, please contact:
 If you find this tutorial useful, please cite our survey paper:
 
 ```bibtex
-@article{piryani2025temporal,
-  title={It's High Time: A Survey of Temporal Question Answering},
-  author={Piryani, Bhawna and Abdallah, Abdelrahman and Mozafari, Jamshid and Anand, Avishek and Jatowt, Adam},
-  journal={arXiv preprint arXiv:2505.20243},
-  year={2025}
+@inproceedings{piryani-etal-2026-high,
+    title = "It{'}s High Time: A Survey of Temporal Question Answering",
+    author = "Piryani, Bhawna  and
+      Abdallah, Abdelrahman  and
+      Mozafari, Jamshid  and
+      Anand, Avishek  and
+      Jatowt, Adam",
+    editor = "Liakata, Maria  and
+      Moreira, Viviane P.  and
+      Zhang, Jiajun  and
+      Jurgens, David",
+    booktitle = "Proceedings of the 64th Annual Meeting of the {A}ssociation for {C}omputational {L}inguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.acl-long.1332/",
+    pages = "28852--28881",
+    ISBN = "979-8-89176-390-6"
 }
 ```
 
