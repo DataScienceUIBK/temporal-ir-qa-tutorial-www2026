@@ -64,7 +64,7 @@ Professor and Deputy Head of the Digital Science Center, with 300+ publications 
 
 ## Materials
 
-All tutorial materials including slides, code examples, and additional resources will be made available on the [tutorial website](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2025/) before and after the tutorial.
+All tutorial materials, including slides, code examples, and additional resources, will be made available on the [tutorial website](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2025/) before and after the tutorial.
 
 ## Target Audience
 
