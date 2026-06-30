@@ -4,7 +4,7 @@
 📅 April 13, 2026 | 📍 Dubai, UAE
 
 [![Tutorial Website](https://img.shields.io/badge/Website-Live-blue)](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2026/)
-[![arXiv](https://img.shields.io/badge/arXiv-2505.20243-b31b1b.svg)](https://arxiv.org/abs/2505.20243)
+[![ACL](https://img.shields.io/badge/arXiv-2505.20243-b31b1b.svg)](https://aclanthology.org/2026.acl-long.1332/)
 [![Video](https://img.shields.io/badge/Video-Teaser-red)](https://youtu.be/u5Ug8lj85jM)
 
 ## Overview
@@ -45,19 +45,20 @@ Professor and Deputy Head of the Digital Science Center, with 300+ publications 
 **Duration:** Half-day tutorial (3 hours including breaks)
 
 1. **Introduction and Motivation**  
-2. **Core Concepts and Temporal IR Tasks** 
-3. **Foundations: Pre-LLM Temporal IR Models** 
-4. **Neural and Transformer-based Temporal Models** 
-5. **Quick Q&A** 
+2. **Core Concepts and Temporal IR Tasks**
+3. **Temporal QA/IR Datasets** 
+4. **Foundations: Pre-LLM Temporal IR**
+5. **Quick Q&A**
 6. **☕ Coffee Break** 
-7. **Temporal RAG and Reasoning** 
-8. **Temporal Web and Evaluation Ecosystem** 
-9. **Emerging Topics and Open Challenges** 
-10. **Concluding Discussion and Q&A**
+7. **Neural and Transformer-based Temporal Models** 
+8. **Temporal RAG** 
+9. **Temporal Web and Evaluation Ecosystem** 
+10. **Emerging Topics and Open Challenges** 
+11. **Concluding Discussion and Q&A**
 
 ## Resources
 
-- **Survey Paper:** [It's High Time: A Survey of Temporal Question Answering](https://arxiv.org/abs/2505.20243)
+- **Survey Paper:** [It's High Time: A Survey of Temporal Question Answering](https://aclanthology.org/2026.acl-long.1332/)
 - **Video Teaser:** [Watch on YouTube](https://youtu.be/u5Ug8lj85jM)
 - **Related Research:** [TemporalQA-Survey Repository](https://github.com/DataScienceUIBK/TemporalQA-Survey)
 
