@@ -1,7 +1,7 @@
 # Temporal Information Retrieval and Question Answering in the Age of LLMs
 
 **WWW 2026 Tutorial**  
-📅 April 13, 2026 | 📍 Dubai, UAE
+📅 June 29, 2026 | 📍 Dubai, UAE
 
 [![Tutorial Website](https://img.shields.io/badge/Website-Live-blue)](https://datascienceuibk.github.io/temporal-ir-qa-tutorial-www2026/)
 [<img src="https://img.shields.io/static/v1?label=Paper&message=ACL%20Anthology&color=red&logo=arXiv"></a>](https://aclanthology.org/2026.acl-long.1332/)
