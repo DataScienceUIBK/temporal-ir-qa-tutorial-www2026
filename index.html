@@ -123,55 +123,123 @@ section[id]{scroll-margin-top:60px}
 .mat.pending{background:var(--line-soft)}
 .mat.pending .go{color:var(--muted)}
   
-/* ── SLIDE MATERIAL BUTTONS ── */
-.mat-actions{
+/* ── COMPACT SLIDE DOWNLOADS ── */
+.slides-panel{
+  grid-column:1 / -1;
+  background:#fff;
+  border:1px solid var(--line);
+  border-top:3px solid var(--p1);
+  border-radius:var(--r);
+  padding:24px;
+}
+
+.slides-panel-head{
   display:flex;
-  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  margin-bottom:20px;
+}
+
+.slides-panel-head h3{
+  font-family:"Newsreader",serif;
+  font-size:1.35rem;
+  font-weight:600;
+  color:var(--p1);
+  margin-top:5px;
+}
+
+.slides-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:10px;
-  margin-top:16px;
 }
 
-.mat-btn{
-  display:inline-flex;
+.slide-item{
+  display:flex;
   align-items:center;
-  justify-content:center;
-  padding:9px 14px;
-  border-radius:6px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.76rem;
-  font-weight:500;
-  text-decoration:none;
-  transition:transform .2s,box-shadow .2s,background .2s;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  background:#f8f9fc;
+  border:1px solid var(--line);
+  border-radius:7px;
 }
 
-.mat-btn:hover{
-  text-decoration:none;
-  transform:translateY(-1px);
+.slide-info{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  min-width:0;
 }
 
-.mat-btn.open{
+.slide-num{
+  flex-shrink:0;
+  width:28px;
+  height:28px;
+  border-radius:50%;
   background:var(--grad);
   color:#fff;
-  box-shadow:0 3px 8px rgba(102,126,234,.25);
-}
-
-.mat-btn.download{
-  background:#fff;
-  color:var(--p1);
-  border:1px solid var(--p1);
-}
-
-.mat-btn.download:hover{
-  background:#f4f5ff;
-}
-
-.mat-number{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-family:"IBM Plex Mono",monospace;
   font-size:.7rem;
-  color:var(--muted);
-  margin-top:6px;
 }
 
+.slide-title{
+  font-size:.88rem;
+  line-height:1.3;
+  color:var(--text);
+}
+
+.slide-actions{
+  display:flex;
+  flex-shrink:0;
+  gap:6px;
+}
+
+.slide-action{
+  padding:5px 8px;
+  border-radius:5px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.66rem;
+  text-decoration:none;
+  border:1px solid var(--p1);
+  color:var(--p1);
+  background:#fff;
+}
+
+.slide-action:hover{
+  background:var(--p1);
+  color:#fff;
+  text-decoration:none;
+}
+
+.slide-action.download{
+  border-color:var(--p2);
+  color:var(--p2);
+}
+
+.slide-action.download:hover{
+  background:var(--p2);
+  color:#fff;
+}
+
+@media(max-width:760px){
+  .slides-list{
+    grid-template-columns:1fr;
+  }
+
+  .slide-item{
+    align-items:flex-start;
+  }
+
+  .slide-actions{
+    flex-direction:column;
+  }
+}
+  
 /* ── CONTACT ── */
 .contact{background:#f8f9fa;border:1px solid var(--line);border-left:4px solid var(--p1);border-radius:var(--r);padding:24px 26px;margin-top:18px}
 .contact .lbl{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--p2);margin-bottom:10px}
@@ -416,8 +484,6 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
   </div>
 </section>
 
-
-
 <!-- MATERIALS -->
 <section id="materials" class="block">
   <div class="wrap">
@@ -427,289 +493,293 @@ footer .mono{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spaci
     </div>
 
     <p class="lede" style="margin-bottom:24px">
-      The tutorial slides are available as individual section PDFs.
-      You may open them in your browser or download them for offline use.
+      Access the tutorial slides by section or explore the accompanying
+      video and survey paper.
     </p>
 
     <div class="mat-grid">
 
-      <!-- COMPLETE DECK -->
-      <div class="mat">
-        <div>
-          <span class="kind">Complete Tutorial</span>
-          <h3>Complete Tutorial Slide Deck</h3>
-          <p class="mat-number">All tutorial sections in one PDF</p>
+      <!-- COMPACT SLIDES PANEL -->
+      <div class="slides-panel">
+
+        <div class="slides-panel-head">
+          <div>
+            <span class="kind">Tutorial Slides</span>
+            <h3>Slides by Section</h3>
+          </div>
+
+          <div class="slide-actions">
+            <a class="slide-action"
+               href="slides/complete-tutorial-slides.pdf"
+               target="_blank"
+               rel="noopener">
+              Open complete deck
+            </a>
+
+            <a class="slide-action download"
+               href="slides/complete-tutorial-slides.pdf"
+               download>
+              Download complete deck
+            </a>
+          </div>
         </div>
 
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/complete-tutorial-slides.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
+        <div class="slides-list">
 
-          <a class="mat-btn download"
-             href="slides/complete-tutorial-slides.pdf"
-             download>
-            Download PDF ↓
-          </a>
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">01</span>
+              <span class="slide-title">
+                Introduction &amp; Motivation
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/01-introduction-motivation.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/01-introduction-motivation.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">02</span>
+              <span class="slide-title">
+                Core Concepts &amp; Temporal IR Tasks
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/02-core-concepts-temporal-ir.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/02-core-concepts-temporal-ir.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">03</span>
+              <span class="slide-title">
+                Temporal QA/IR Datasets
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/03-temporal-qa-ir-datasets.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/03-temporal-qa-ir-datasets.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">04</span>
+              <span class="slide-title">
+                Foundations: Pre-LLM Temporal IR
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/04-foundations-pre-llm-temporal-ir.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/04-foundations-pre-llm-temporal-ir.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">05</span>
+              <span class="slide-title">
+                Neural &amp; Transformer-based Models
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/05-neural-temporal-models.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/05-neural-temporal-models.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">06</span>
+              <span class="slide-title">
+                Temporal Web &amp; Evaluation
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/06-temporal-web-evaluation.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/06-temporal-web-evaluation.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">07</span>
+              <span class="slide-title">
+                Temporal RAG
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/07-temporal-rag.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/07-temporal-rag.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">08</span>
+              <span class="slide-title">
+                Emerging Topics &amp; Open Challenges
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/08-emerging-topics.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/08-emerging-topics.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
+          <div class="slide-item">
+            <div class="slide-info">
+              <span class="slide-num">09</span>
+              <span class="slide-title">
+                Conclusion &amp; Key Takeaways
+              </span>
+            </div>
+
+            <div class="slide-actions">
+              <a class="slide-action"
+                 href="slides/09-conclusion.pdf"
+                 target="_blank"
+                 rel="noopener">
+                Open
+              </a>
+
+              <a class="slide-action download"
+                 href="slides/09-conclusion.pdf"
+                 download>
+                ↓
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- SECTION 1 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 01</span>
-          <h3>Introduction &amp; Motivation</h3>
-          <p class="mat-number">Why time is fundamental to information access</p>
-        </div>
+      <!-- VIDEO TEASER -->
+      <a class="mat"
+         href="https://youtu.be/u5Ug8lj85jM"
+         target="_blank"
+         rel="noopener">
 
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/01-introduction-motivation.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/01-introduction-motivation.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 2 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 02</span>
-          <h3>Core Concepts &amp; Temporal IR Tasks</h3>
-          <p class="mat-number">Temporal concepts, signals, and prediction tasks</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/02-core-concepts-temporal-ir.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/02-core-concepts-temporal-ir.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 3 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 03</span>
-          <h3>Temporal QA/IR Datasets</h3>
-          <p class="mat-number">Datasets and evaluation benchmarks</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/03-temporal-qa-ir-datasets.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/03-temporal-qa-ir-datasets.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 4 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 04</span>
-          <h3>Foundations: Pre-LLM Temporal IR</h3>
-          <p class="mat-number">Classical indexing, ranking, and retrieval methods</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/04-foundations-pre-llm-temporal-ir.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/04-foundations-pre-llm-temporal-ir.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 5 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 05</span>
-          <h3>Neural &amp; Transformer-based Temporal Models</h3>
-          <p class="mat-number">Neural temporal modeling and dense retrieval</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/05-neural-temporal-models.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/05-neural-temporal-models.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 6 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 06</span>
-          <h3>Temporal Web &amp; Evaluation Ecosystem</h3>
-          <p class="mat-number">Web archives, Memento, WARC, and evaluation</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/06-temporal-web-evaluation.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/06-temporal-web-evaluation.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 7 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 07</span>
-          <h3>Temporal RAG</h3>
-          <p class="mat-number">Retrieval-augmented generation over evolving knowledge</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/07-temporal-rag.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/07-temporal-rag.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 8 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 08</span>
-          <h3>Emerging Topics &amp; Open Challenges</h3>
-          <p class="mat-number">Open research problems and future directions</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/08-emerging-topics.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/08-emerging-topics.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- SECTION 9 -->
-      <div class="mat">
-        <div>
-          <span class="kind">Section 09</span>
-          <h3>Conclusion &amp; Key Takeaways</h3>
-          <p class="mat-number">Tutorial summary and concluding discussion</p>
-        </div>
-
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="slides/09-conclusion.pdf"
-             target="_blank"
-             rel="noopener">
-            Open PDF ↗
-          </a>
-
-          <a class="mat-btn download"
-             href="slides/09-conclusion.pdf"
-             download>
-            Download PDF ↓
-          </a>
-        </div>
-      </div>
-
-      <!-- VIDEO -->
-      <div class="mat">
         <div>
           <span class="kind">Video Teaser</span>
           <h3>Watch the Tutorial Teaser</h3>
         </div>
 
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="https://youtu.be/u5Ug8lj85jM"
-             target="_blank"
-             rel="noopener">
-            Watch Video ↗
-          </a>
-        </div>
-      </div>
+        <span class="go">Watch video →</span>
+      </a>
 
-      <!-- SURVEY -->
-      <div class="mat">
+      <!-- SURVEY PAPER -->
+      <a class="mat"
+         href="https://aclanthology.org/2026.acl-long.1332/"
+         target="_blank"
+         rel="noopener">
+
         <div>
           <span class="kind">Survey Paper</span>
-          <h3>It's High Time: A Survey of Temporal Question Answering</h3>
+          <h3>
+            It's High Time: A Survey of Temporal Question Answering
+          </h3>
         </div>
 
-        <div class="mat-actions">
-          <a class="mat-btn open"
-             href="https://aclanthology.org/2026.acl-long.1332/"
-             target="_blank"
-             rel="noopener">
-            Read Paper ↗
-          </a>
-        </div>
-      </div>
+        <span class="go">Read paper →</span>
+      </a>
 
     </div>
   </div>
 </section>
+
+
 
 <!-- RESOURCES -->
 <section id="resources" class="block">
